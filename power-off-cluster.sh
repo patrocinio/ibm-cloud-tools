@@ -1,8 +1,8 @@
-CLUSTER=rhoc-cp4i
+CLUSTER=$1
 
 echo Cluster: $CLUSTER
 
-RG=$(ibmcloud ks cluster ls | grep $CLUSTER | awk '{ print $11 }')
+RG=$(ibmcloud ks cluster ls | grep $CLUSTER | awk '{ print $10 }')
 
 echo Resource Group: $RG
 
