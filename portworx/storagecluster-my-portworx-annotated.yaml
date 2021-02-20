@@ -1,0 +1,113 @@
+﻿apiVersion: core.libopenstorage.org/v1
+kind: StorageCluster
+metadata:
+  annotations:
+    portworx.io/is-openshift: 'true'
+  selfLink: >-
+    /apis/core.libopenstorage.org/v1/namespaces/patro-mq/storageclusters/my-portworx-annotated
+  resourceVersion: '4571120'
+  name: my-portworx-annotated
+  uid: bb79abb5-f772-4e7b-b025-26acb2395338
+  creationTimestamp: '2021-02-20T21:21:18Z'
+  generation: 2
+  managedFields:
+    - apiVersion: core.libopenstorage.org/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:portworx.io/is-openshift': {}
+        'f:spec':
+          .: {}
+          'f:autopilot': {}
+      manager: Mozilla
+      operation: Update
+      time: '2021-02-20T21:21:18Z'
+    - apiVersion: core.libopenstorage.org/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:finalizers':
+            .: {}
+            'v:"operator.libopenstorage.org/delete"': {}
+        'f:spec':
+          'f:secretsProvider': {}
+          'f:version': {}
+          'f:image': {}
+          'f:storage':
+            .: {}
+            'f:useAll': {}
+          'f:startPort': {}
+          'f:updateStrategy':
+            .: {}
+            'f:rollingUpdate':
+              .: {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:placement':
+            .: {}
+            'f:nodeAffinity':
+              .: {}
+              'f:requiredDuringSchedulingIgnoredDuringExecution':
+                .: {}
+                'f:nodeSelectorTerms': {}
+          'f:stork':
+            .: {}
+            'f:enabled': {}
+          'f:revisionHistoryLimit': {}
+          'f:kvdb':
+            .: {}
+            'f:internal': {}
+          'f:imagePullPolicy': {}
+        'f:status':
+          .: {}
+          'f:clusterName': {}
+          'f:desiredImages':
+            .: {}
+            'f:stork': {}
+          'f:phase': {}
+          'f:storage': {}
+          'f:version': {}
+      manager: operator
+      operation: Update
+      time: '2021-02-20T21:21:19Z'
+  namespace: patro-mq
+  finalizers:
+    - operator.libopenstorage.org/delete
+spec:
+  revisionHistoryLimit: 10
+  startPort: 17001
+  placement:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: px/enabled
+                operator: NotIn
+                values:
+                  - 'false'
+              - key: node-role.kubernetes.io/infra
+                operator: DoesNotExist
+  stork:
+    enabled: true
+  autopilot: {}
+  kvdb:
+    internal: true
+  imagePullPolicy: Always
+  secretsProvider: k8s
+  version: 2.6.3
+  image: 'portworx/oci-monitor:2.6.3'
+  storage:
+    useAll: true
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+status:
+  clusterName: my-portworx-annotated
+  desiredImages:
+    stork: 'openstorage/stork:2.6.0'
+  phase: Initializing
+  storage: {}
+  version: 2.6.3
