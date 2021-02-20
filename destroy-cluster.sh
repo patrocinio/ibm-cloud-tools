@@ -10,7 +10,7 @@ REGION_NAME=$(ibmcloud ks cluster get --cluster $1 | grep "Master Location:" | a
 
 echo Region Name: $REGION_NAME
 
-REGION=$(ibmcloud regions | grep $REGION_NAME | awk '{print $1}')
+REGION=$(ibmcloud regions | grep $REGION_NAME | head -1 | awk '{print $1}')
 
 echo Region: $REGION
 

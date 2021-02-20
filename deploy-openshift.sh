@@ -43,7 +43,7 @@ echo Subnet: $SG_ID
 #add_sg_rule
 #create_object_storage
 
-COS_ID=$(ibmcloud resource service-instance myvpc-cos | grep ID | awk '{ print $2 }')
+COS_ID=$(ibmcloud resource service-instance myvpc-cos | grep GUID | awk '{ print $2 }')
 echo COS ID: $COS_ID
 
 create_openshift

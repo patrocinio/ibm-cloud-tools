@@ -2,7 +2,7 @@ CLUSTER=$1
 
 echo Cluster: $CLUSTER
 
-target-resource-group.sh $CLUSTER
+./target-resource-group.sh $CLUSTER
 
 ID=$(ibmcloud ks cluster get --cluster $CLUSTER | grep ID: | grep -v "Resource Group ID" | awk '{print $2}')
 
